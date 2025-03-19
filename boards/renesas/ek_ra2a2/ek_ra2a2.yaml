@@ -1,0 +1,14 @@
+identifier: ek_ra2a2
+name: Renesas EK-RA2A2
+type: mcu
+arch: arm
+ram: 48
+flash: 512
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - gpio
+  - uart
+  - watchdog
+vendor: renesas
