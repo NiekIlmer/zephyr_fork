@@ -1,0 +1,42 @@
+
+&pinctrl {
+	sci9_default: sci9_default {
+		group1 {
+			/* tx rx */
+			psels = <RA_PSEL(RA_PSEL_SCI_0, 4, 11)>,
+			<RA_PSEL(RA_PSEL_SCI_0, 2, 4)>;
+		};
+	};
+};
+
+/ {
+	chosen {
+		zephyr,bt-hci = &bt_hci_uart;
+	};
+};
+
+
+&ioport4 {
+    status = "okay";
+};
+
+
+&sci0 {
+    pinctrl-0 = <&sci9_default>;
+    pinctrl-names = "default";
+    status = "okay";
+    uart0: uart {
+        current-speed = <115200>;
+        status = "okay";
+
+        bt_hci_uart: bt_hci_uart {
+            compatible = "zephyr,bt-hci-uart";
+            status = "okay";
+
+            da1453x {
+                compatible = "renesas,bt-hci-da1453x";
+                status = "okay";
+            };
+        };
+    };
+};
